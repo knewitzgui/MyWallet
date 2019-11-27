@@ -15,23 +15,29 @@
       <div class="col-sm-9 col-md-7 col-lg-3 center mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin" action="{{route('login')}}" method="post">
+            <h5 class="card-title text-center">Registrar-se</h5>
+            <form class="form-signin" action="{{route('register')}}" method="post">
               @csrf
               <div class="form-label-group">
-                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
-                <label for="inputEmail">Email</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Nome" required autofocus>
+                <label for="name">Nome</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Senha" required>
-                <label for="inputPassword">Senha</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
+                <label for="email">Email</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
-              <a href="{{route('user.register')}}" align="right"><h6 class="title margem">Registrar-se</h6></a>
-              <hr class="my-4">
-              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Login com Google</button>
-              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Login com Facebook</button>
+
+              <div class="form-label-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>
+                <label for="password">Senha</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="password_confirm" class="form-control" placeholder="Confirmação de Senha" required>
+                <label for="password_confirm">Confirmação de Senha</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Cadastrar</button>
             </form>
           </div>
         </div>

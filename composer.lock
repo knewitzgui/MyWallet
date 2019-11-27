@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd03beb4f7f31a974f7ce4ce5aed4ce7",
+    "content-hash": "121712fb511be6c5eeda2a038d70a371",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -325,6 +325,65 @@
                 "parser"
             ],
             "time": "2019-03-17T18:48:37+00:00"
+        },
+        {
+            "name": "escapework/laravel-steroids",
+            "version": "0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EscapeWork/LaravelSteroids.git",
+                "reference": "cddd4ecf13a3d06eb593e4bfbca1bac1f3a2668a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EscapeWork/LaravelSteroids/zipball/cddd4ecf13a3d06eb593e4bfbca1bac1f3a2668a",
+                "reference": "cddd4ecf13a3d06eb593e4bfbca1bac1f3a2668a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.4",
+                "illuminate/filesystem": "~5.4",
+                "illuminate/support": "~5.4",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7.*-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EscapeWork\\LaravelSteroids\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Dalmolin",
+                    "email": "luis.nh@gmail.com",
+                    "homepage": "http://luisdalmolin.com.br",
+                    "role": "Web Developer"
+                },
+                {
+                    "name": "Eduardo Henrique Kasper",
+                    "email": "ehkasper@gmail.com",
+                    "homepage": "http://ehkasper.com",
+                    "role": "Web Developer"
+                }
+            ],
+            "description": "Steroids for Laravel 5.",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2017-10-03T14:53:34+00:00"
         },
         {
             "name": "fideloper/proxy",

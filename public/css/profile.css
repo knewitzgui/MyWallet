@@ -1,0 +1,28 @@
+.center {
+  position: absolute;
+  width: auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.margem {
+  margin: 20px;
+}
+
+.horizontal-center {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.margem-salvar {
+  margin-bottom: 20px;
+  padding: 0px;
+  left: 45%;
+}
+
