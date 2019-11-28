@@ -14,12 +14,14 @@ class CreateTableProfiles extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('surname')->nullable();
+            $table->string('cpf')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('phone')->nullable();
             $table->decimal('income', 10,2)->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
         });
     }
 
@@ -31,12 +33,14 @@ class CreateTableProfiles extends Migration
     public function down()
     {
       Schema::table('users', function (Blueprint $table) {
-          $table->dropColumn('surname');
+          $table->dropColumn('cpf');
           $table->dropColumn('address');
           $table->dropColumn('city');
           $table->dropColumn('state');
           $table->dropcolumn('phone');
           $table->dropcolumn('income');
+          $table->dropcolumn('google_id');
+          $table->dropcolumn('facebook_id');
       });
     }
 }

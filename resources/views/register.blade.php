@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>MyWallet</title>
+    <title>Simplificando</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset("css/app.css")}}">
     <link rel="stylesheet" href="{{ asset("css/login.css")}}">
   </head>
   <body>
+    @include('inc.messages')
+    @include('inc.menu')
+
     <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-3 center mx-auto">

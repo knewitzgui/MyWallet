@@ -8,6 +8,7 @@ use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthLoginRequest;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -41,16 +42,27 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function logout()
+    {
+        Auth::guard('users')->logout();
+
+        return redirect()->route('login');
+    }
+
     public function login(Request $request)
     	{
+        if(Auth::check()){
+          return redirect()->route('manager');
+        }else{
 
     			$credentials = $request->only('email', 'password');
 
     			if (Auth::guard('users')->attempt($credentials, $request->get('remember_token') == 1)) {
-    					return view('manager')->with('success','Login efetuado com Sucesso!');
+    					return redirect()->route('manager')->with('message','Login efetuado com Sucesso!');
     			}
 
     			return view('login')->with('error', 'Não encontramos nenhum usuário com os dados informados');
+        }
     	}
 
     public function googleRedirect(){
@@ -63,36 +75,30 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver('google')->user();
         } catch (\Exception $e) {
-            return redirect()->route('home')->with('error','Ocorreu um erro ao efetuar o login com o Google. Por favor tente novamente');
+          dd($e);
+            return redirect()->route('login')->with('error','Ocorreu um erro ao efetuar o login com o Google. Por favor tente novamente');
         }
 
         // check if they're an existing user
-        $existingUser = Donator::where('email', $user->email)->first();
+        $existingUser = User::where('email', $user->email)->first();
 
         if($existingUser){
             // log them in
-            auth('donators')->login($existingUser, true);
+            auth('users')->login($existingUser, true);
 
-            if(Session::has('redirect_url')){
-                return redirect()->to( session('redirect_url') );
-            }
-
-            return redirect()->route('auth.profile');
+            return redirect()->route('manager')->with('message', 'Autenticado com sucesso!');
 
         } else {
             // create a new user
-            $newUser                  = new Donator;
+            $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
             $newUser->google_id       = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
-            $newUser->complete = 0;
             $newUser->save();
 
-            auth('donators')->login($newUser, true);
+            auth('users')->login($newUser, true);
 
-            return redirect()->route('auth.profile.create');
+            return redirect()->route('profile');
         }
 
     }
@@ -107,36 +113,30 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver('facebook')->user();
         } catch (\Exception $e) {
-            return redirect()->route('home')->with('error','Ocorreu um erro ao efetuar o login com o Faebook. Por favor tente novamente');
+          dd($e);
+            return redirect()->route('login')->with('error','Ocorreu um erro ao efetuar o login com o Faebook. Por favor tente novamente');
         }
 
         // check if they're an existing user
-        $existingUser = Donator::where('email', $user->email)->first();
+        $existingUser = User::where('email', $user->email)->first();
 
         if($existingUser){
             // log them in
-            auth('donators')->login($existingUser, true);
+            auth('users')->login($existingUser, true);
 
-            if(Session::has('redirect_url')){
-                return redirect()->to( session('redirect_url') );
-            }
-
-            return redirect()->route('auth.profile');
+            return redirect()->route('manager')->with('message', 'Autenticado com sucesso!');
 
         } else {
             // create a new user
-            $newUser                  = new Donator;
+            $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
             $newUser->google_id       = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
-            $newUser->complete = 0;
             $newUser->save();
 
-            auth('donators')->login($newUser, true);
+            auth('users')->login($newUser, true);
 
-            return redirect()->route('auth.profile.create');
+            return redirect()->route('profile');
         }
 
       }

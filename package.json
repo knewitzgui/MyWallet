@@ -27,5 +27,8 @@
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.6.10"
     },
-    "dependencies": {}
+    "dependencies": {
+        "jquery": "^3.4.1",
+        "jquery-mask-plugin": "^1.14.16"
+    }
 }

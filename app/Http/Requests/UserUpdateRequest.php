@@ -25,7 +25,6 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name'  => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
         ];
     }
 
@@ -33,8 +32,6 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name.required'     => 'Preencha o nome',
-            'email.required'    => 'Preencha o e-mail',
-            'email.email'       => 'Preencha um e-mail válido',
             'password.required' => 'Preencha a senha',
         ];
     }
