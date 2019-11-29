@@ -12,9 +12,14 @@
 */
 
 Route::get('/', function () { return view('login');} );
+Route::get('/politica-de-privacidade', function () { return view('privacy');} );
 
 #Rotas gerenciador
 Route::get('/gerenciador', ['as' => 'manager', 'uses' => 'ManagerController@index']);
+Route::get('/gerenciador/conta-recorrente', ['as' => 'recurrent', 'uses' => 'ManagerController@recurrent']);
+Route::post('/gerenciador/conta', ['as' => 'expense.store', 'uses' => 'ManagerController@expenseStore']);
+Route::get('/gerenciador/conta', ['as' => 'expense', 'uses' => 'ManagerController@expense']);
+Route::get('/gerenciador/renda-extra', ['as' => 'extra', 'uses' => 'ManagerController@extra']);
 #investimentos
 Route::get('/investimentos', ['as' => 'investment', 'uses' => 'InvestmentController@index']);
 

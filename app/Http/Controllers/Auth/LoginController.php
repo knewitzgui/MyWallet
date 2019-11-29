@@ -131,7 +131,7 @@ class LoginController extends Controller
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
-            $newUser->google_id       = $user->id;
+            $newUser->facebook_id       = $user->id;
             $newUser->save();
 
             auth('users')->login($newUser, true);

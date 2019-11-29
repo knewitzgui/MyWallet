@@ -4,6 +4,7 @@
     "/css/login.css": "/css/login.css",
     "/css/manager.css": "/css/manager.css",
     "/css/profile.css": "/css/profile.css",
+    "/css/expense.css": "/css/expense.css",
     "/js/login.js": "/js/login.js",
     "/js/manager.js": "/js/manager.js",
     "/js/profile.js": "/js/profile.js"

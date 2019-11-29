@@ -13,7 +13,45 @@
   <body>
     @include('inc.messages')
     @include('inc.menu')
-
+    <div class="container card center bg-white">
+        <div class="col-sm-3">
+          <h1 align="left" class="margem">Gerenciador</h1>
+        </div>
+        <div class="col-sm-9">
+          <a href="{{ route('extra') }}"><button class="btn btn-primary direita">Adicionar renda extra</button></a>
+          <a href="{{ route('recurrent') }}"><button class="btn btn-primary direita">Adicionar despesa recorrente</button></a>
+          <a href="{{ route('expense') }}"><button class="btn btn-primary direita">Adicionar despesa</button></a>
+        </div>
+      <table class="table table-sm-12 table-bordered lista">
+        <thead>
+          <tr>
+            <th width="50px" scope="col">#</th>
+            <th scope="col">Identificador</th>
+            <th scope="col">Vencimento</th>
+            <th scope="col">Valor</th>
+            <th width="200px" scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><input type="checkbox"></th>
+            <td>Cartão Nubank</td>
+            <td>05/12/2019</td>
+            <td>R$ 499,90</td>
+            <td><button class="btn btn-danger">Excluir</button> <button class="btn btn-info">Pagar</button></td>
+          </tr>
+          <tr>
+            <th scope="row"><input type="checkbox"></th>
+            <td>Luz - RGE</td>
+            <td>12/12/2019</td>
+            <td>R$ 319,80</td>
+            <td><button class="btn btn-danger">Excluir</button> <button class="btn btn-info">Pagar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-info margem">Pagar contas marcadas</button>
+      <span class="direita size"><strong>Saldo:</strong> - R$ 819,70</span>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="{{ asset("js/app.js")}}"></script>

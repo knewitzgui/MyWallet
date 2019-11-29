@@ -22,3 +22,5 @@ mix.js('resources/js/manager.js', 'public/js')
 
 mix.js('resources/js/profile.js', 'public/js')
 .sass('resources/sass/profile.scss', 'public/css');
+
+mix.sass('resources/sass/expense.scss', 'public/css');

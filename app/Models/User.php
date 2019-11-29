@@ -49,4 +49,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
       }
     }
 
+    public function setPhoneAttribute($phone){
+      $this->attributes['phone'] = str_replace(['(', ')', '-'], '', $phone);
+    }
+
+    public function setCpfAttribute($cpf){
+      $this->attributes['cpf'] = str_replace(['.', '-'], '', $cpf);
+    }
+
+    public function setIncomeAttribute($income){
+
+      $data = str_replace('.', '', $income);
+
+      $this->attributes['income'] = str_replace(',', '.', $data);
+    }
+
 }
