@@ -15,11 +15,12 @@ class ManagerController extends Controller
 			$this->expenses = $expenses;
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
 		if(Auth::check()){
 		return view('manager', [
-			'page' => 'manager'
+			'page' => 'manager',
+			'expenses' => $this->expenses->manager($request),
 		]);
 	}else{
 		return redirect()->route('login')->with('error', 'Você precisa efetuar login para acessar esta página!');

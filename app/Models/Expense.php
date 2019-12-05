@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use EscapeWork\LaravelSteroids\Model;
+use EscapeWork\LaravelSteroids\Presentable;
+use App\Presenters\ExpensePresenter;
 
 class Expense extends Model
 {
-
+  use Presentable;
     /**
      * Table
      */
@@ -21,6 +23,8 @@ class Expense extends Model
          'value',
      ];
 
+     protected $presenter = ExpensePresenter::class;
+
      /**
      * Dates
      */
@@ -33,6 +37,16 @@ class Expense extends Model
       $data = str_replace('.', '', $value);
 
       $this->attributes['value'] = str_replace(',', '.', $data);
+    }
+
+    // public function setVctoAttribute($value){
+    //
+    //   $this->attributes['vcto'] = str_replace('/', '-', $value);
+    // }
+
+    public function setVctoAttribute($value)
+    {
+        $this->_setDateAttribute('vcto', $value);
     }
 
 }

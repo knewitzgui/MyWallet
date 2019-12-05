@@ -30503,7 +30503,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/macmini02/Simplificando/resources/js/login.js */"./resources/js/login.js");
+module.exports = __webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\js\login.js */"./resources/js/login.js");
 
 
 /***/ })

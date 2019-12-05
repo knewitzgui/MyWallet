@@ -14,7 +14,7 @@
     @include('inc.menu')
     @include('inc.messages')
 
-    <div class="container card center bg-white">
+    <div class="container card bg-white">
       <h1 align="center" class="margem">Perfil</h1>
       <form class="form-group horizontal-center" action="{{route('profile.update', $user->id)}}" method="post">
         @csrf

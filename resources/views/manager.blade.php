@@ -33,13 +33,15 @@
           </tr>
         </thead>
         <tbody>
+          @foreach($expenses as $expense)
           <tr>
             <th scope="row"><input type="checkbox"></th>
-            <td>Cartão Nubank</td>
-            <td>05/12/2019</td>
-            <td>R$ 499,90</td>
+            <td>{{ $expense->name }}</td>
+            <td>{{ $expense->present->vcto }}</td>
+            <td>R$ {{ $expense->value }}</td>
             <td><button class="btn btn-danger">Excluir</button> <button class="btn btn-info">Pagar</button></td>
           </tr>
+          @endforeach
           <tr>
             <th scope="row"><input type="checkbox"></th>
             <td>Luz - RGE</td>

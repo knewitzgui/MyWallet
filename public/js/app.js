@@ -30601,12 +30601,12 @@ __webpack_require__(/*! jquery-mask-plugin */ "./node_modules/jquery-mask-plugin
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/macmini02/Simplificando/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/macmini02/Simplificando/resources/sass/app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! /Users/macmini02/Simplificando/resources/sass/login.scss */"./resources/sass/login.scss");
-__webpack_require__(/*! /Users/macmini02/Simplificando/resources/sass/manager.scss */"./resources/sass/manager.scss");
-__webpack_require__(/*! /Users/macmini02/Simplificando/resources/sass/profile.scss */"./resources/sass/profile.scss");
-module.exports = __webpack_require__(/*! /Users/macmini02/Simplificando/resources/sass/expense.scss */"./resources/sass/expense.scss");
+__webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\sass\login.scss */"./resources/sass/login.scss");
+__webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\sass\manager.scss */"./resources/sass/manager.scss");
+__webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\sass\profile.scss */"./resources/sass/profile.scss");
+module.exports = __webpack_require__(/*! C:\Users\Guilherme\Simplificando\resources\sass\expense.scss */"./resources/sass/expense.scss");
 
 
 /***/ })
