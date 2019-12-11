@@ -18,6 +18,7 @@ Route::get('/politica-de-privacidade', function () { return view('privacy');} );
 Route::get('/gerenciador', ['as' => 'manager', 'uses' => 'ManagerController@index']);
 Route::get('/gerenciador/conta-recorrente', ['as' => 'recurrent', 'uses' => 'ManagerController@recurrent']);
 Route::post('/gerenciador/conta', ['as' => 'expense.store', 'uses' => 'ManagerController@expenseStore']);
+Route::get('/gerenciador/remover-conta/{id}', ['as' => 'expense.delete', 'uses' => 'ManagerController@expenseDelete']);
 Route::get('/gerenciador/conta', ['as' => 'expense', 'uses' => 'ManagerController@expense']);
 Route::get('/gerenciador/renda-extra', ['as' => 'extra', 'uses' => 'ManagerController@extra']);
 #investimentos

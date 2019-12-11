@@ -32,8 +32,8 @@
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
               <a href="{{route('user.register')}}" align="right"><h6 class="title margem">Registrar-se</h6></a>
               <hr class="my-4">
-              <a href="{{route('social.google.redirect')}}"><button class="btn btn-lg btn-google btn-block text-uppercase" type="button"><i class="fab fa-google mr-2"></i> Login com Google</button></a>
-              <a href="{{route('social.facebook.redirect')}}"><button class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fab fa-facebook-f mr-2"></i> Login com Facebook</button></a>
+              <a href="{{route('social.google.redirect')}}" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Login com Google</a>
+              <a href="{{route('social.facebook.redirect')}}" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Login com Facebook</a>
             </form>
           </div>
         </div>

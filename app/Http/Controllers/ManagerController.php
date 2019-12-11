@@ -20,7 +20,8 @@ class ManagerController extends Controller
 		if(Auth::check()){
 		return view('manager', [
 			'page' => 'manager',
-			'expenses' => $this->expenses->manager($request),
+			'expenses' => $this->expenses->manager($request, Auth::user()->id),
+			'saldo' => $this->expenses->saldo(Auth::user()->id),
 		]);
 	}else{
 		return redirect()->route('login')->with('error', 'Você precisa efetuar login para acessar esta página!');
@@ -40,10 +41,18 @@ class ManagerController extends Controller
 
 	public function expenseStore(Request $request)
 	{
-
+		$request->merge(['user_id' => Auth::user()->id]);
 		$this->expenses->create($request->all());
 
 		return redirect()->route('manager')->with('message', 'Conta inserida com sucesso!');
+	}
+
+	public function expenseDelete($id)
+	{
+
+		$this->expenses->destroy($id);
+
+		return redirect()->route('manager')->with('message', 'Conta removida com sucesso!');
 	}
 
 	public function expense()

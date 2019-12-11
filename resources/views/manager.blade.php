@@ -18,8 +18,7 @@
           <h1 align="left" class="margem">Gerenciador</h1>
         </div>
         <div class="col-sm-9">
-          <a href="{{ route('extra') }}"><button class="btn btn-primary direita">Adicionar renda extra</button></a>
-          <a href="{{ route('recurrent') }}"><button class="btn btn-primary direita">Adicionar despesa recorrente</button></a>
+          <a href="{{ route('extra') }}"><button class="btn btn-primary direita">Adicionar ganho</button></a>
           <a href="{{ route('expense') }}"><button class="btn btn-primary direita">Adicionar despesa</button></a>
         </div>
       <table class="table table-sm-12 table-bordered lista">
@@ -29,7 +28,7 @@
             <th scope="col">Identificador</th>
             <th scope="col">Vencimento</th>
             <th scope="col">Valor</th>
-            <th width="200px" scope="col">Ações</th>
+            <th width="100px" scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -38,21 +37,14 @@
             <th scope="row"><input type="checkbox"></th>
             <td>{{ $expense->name }}</td>
             <td>{{ $expense->present->vcto }}</td>
-            <td>R$ {{ $expense->value }}</td>
-            <td><button class="btn btn-danger">Excluir</button> <button class="btn btn-info">Pagar</button></td>
+            <td>R$ {{ number_format($expense->value, 2, ',', '.') }}</td>
+            <td><a href="{{ route('expense.delete', $expense->id) }}" class="btn btn-danger">Excluir</a> <!-- <button class="btn btn-info">Pagar</button> --> </td>
           </tr>
           @endforeach
-          <tr>
-            <th scope="row"><input type="checkbox"></th>
-            <td>Luz - RGE</td>
-            <td>12/12/2019</td>
-            <td>R$ 319,80</td>
-            <td><button class="btn btn-danger">Excluir</button> <button class="btn btn-info">Pagar</button></td>
-          </tr>
         </tbody>
       </table>
       <button class="btn btn-info margem">Pagar contas marcadas</button>
-      <span class="direita size"><strong>Saldo:</strong> - R$ 819,70</span>
+      <span class="direita size"><strong>Saldo:</strong>R$ {{ number_format($saldo, 2, ',', '.') }}</span>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

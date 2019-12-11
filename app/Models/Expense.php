@@ -21,6 +21,7 @@ class Expense extends Model
          'name',
          'vcto',
          'value',
+         'user_id'
      ];
 
      protected $presenter = ExpensePresenter::class;

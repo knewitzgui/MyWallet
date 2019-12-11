@@ -30,6 +30,13 @@ class ExpensePresenter extends Presenter
         }
     }
 
+    // public function value()
+    // {
+    //     if ($this->model->value) {
+    //         return $this->model->value->toLocaleString('d/m/Y');
+    //     }
+    // }
+
     public function type()
     {
         return config('banners.types.'.$this->model->type.'.title');

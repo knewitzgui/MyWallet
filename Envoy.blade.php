@@ -1,0 +1,64 @@
+@servers(['localhost' => '127.0.0.1', 'web' => '-A simplificando1@simplificando.com.br'])
+
+@setup
+    $repo    = 'git@github.com:knewitzgui/Simplificando.git';
+    $base    = '/home/simplificando1/apps/guilherme;
+    $branch  = $branch ?? "master";
+    $path    = '/home/simplificando1/apps/guilherme/repo/'.$branch.'/Simplificando';
+    $now     = new DateTime();
+    $date    = $now->format('YmdHis');
+    $env     = $env ?? 'production';
+    $path    = rtrim($path, '/');
+    $release = $path.'/'.$date;
+    $phpbin = 'php72'; // pra locaweb, coloca php71. Pq por padrao eles usam a 5.3
+@endsetup
+
+// tem que criar uma psta na raiz com o nome .ssh e rodar esse comando estando dentro
+// dela, via ssh no teu terminal
+// depois precisa copiar o conteudo da chave criada e colocar la nas chaves do teu
+// repositorio. Sem isso tu nao vai conseguir clonar
+@task('generate-ssh-key', ['on' => 'web'])
+    ssh-keygen -f id_rsa -t rsa -N ''
+@endtask
+
+@macro('deploy')
+    run_deploy
+    hour
+@endmacro
+
+@task('test', ['on' => 'localhost'])
+    phpunit
+@endtask
+
+// isso aqui nao funciona muito bem. Só qdo a locaweb quer
+// sugiro fazer isso manualmente
+// criar uma pasta em '/home/USERFTP/apps/guilherme/composer
+// depois rodar no terminal local, envoy run verify_composer. Pq dai funciona
+@task('verify_composer', ['on' => 'web'])
+    [ ! -d {{ $base }}/composer ] && mkdir {{ $base }}/composer; cd {{ $base }}/composer; {{ $phpbin }} -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"; {{ $phpbin }} composer-setup.php;
+@endtask
+
+//depois de ter colocado a chave no teu repo e criado os aruivos do composer
+//ai é so rodar envoy run deploy
+@task('run_deploy', ['on' => 'web'])
+    cd {{ $path }};
+    git pull;
+    echo "Repository updated";
+    {{ $phpbin }} {{ $base }}/composer/composer.phar install --no-interaction --no-dev --prefer-dist --ignore-platform-reqs;
+    {{ $phpbin }} artisan config:cache;
+    {{ $phpbin }} artisan optimize;
+    {{ $phpbin }} artisan asset:dist;
+@endtask
+
+@task('assets', ['on' => 'web'])
+    cd {{ $release }};
+@endtask
+
+@task('finalize', ['on' => 'web'])
+    {{-- curl -X POST -H 'Content-type: application/json' --data '{"text":"Deployment to production completed"}' https://hooks.slack.com/services/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 --}}
+@endtask
+
+
+@task('hour', ['on' => 'localhost'])
+    echo "Deploy finalizado em {{ date('d/m/Y H:i:s') }}"
+@endtask

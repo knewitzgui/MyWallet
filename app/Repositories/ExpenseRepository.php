@@ -38,7 +38,7 @@ class ExpenseRepository extends Repository
         return $this->model;
     }
 
-    public function manager($request)
+    public function manager($request, $userid)
     {
         $query = $this->model->newQuery();
 
@@ -47,6 +47,14 @@ class ExpenseRepository extends Repository
         }
 
         return $query->orderBy('created_at', 'desc')
+                     ->where('user_id', '=', $userid)
                      ->paginate();
+    }
+
+    public function saldo($userid){
+      $query = $this->model->newQuery();
+
+      return $query->where('user_id', '=', $userid)
+                   ->sum('value');
     }
 }
