@@ -32,6 +32,7 @@
           </tr>
         </thead>
         <tbody>
+          @if(Auth::user->income != null)
           <tr style="background-color: #ccffcc">
             <th scope="row"><input type="checkbox"></th>
             <td>Renda Mensal</td>
@@ -39,6 +40,7 @@
             <td><i class="fa fa-plus-circle" aria-hidden="true"></i> R$ {{ Auth::user()->income }}</td>
             <td></td>
           </tr>
+          @endif
           @foreach($moviments as $moviment)
           @if($moviment instanceof App\Models\Expense)
           <tr style="background-color: #ffcccc">
