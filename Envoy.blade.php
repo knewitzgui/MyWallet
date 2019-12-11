@@ -2,7 +2,7 @@
 
 @setup
     $repo    = 'git@github.com:knewitzgui/Simplificando.git';
-    $base    = '/home/simplificando1/apps/guilherme;
+    $base    = '/home/simplificando1/apps/guilherme';
     $branch  = $branch ?? "master";
     $path    = '/home/simplificando1/apps/guilherme/repo/'.$branch.'/Simplificando';
     $now     = new DateTime();
@@ -13,10 +13,6 @@
     $phpbin = 'php72'; // pra locaweb, coloca php71. Pq por padrao eles usam a 5.3
 @endsetup
 
-// tem que criar uma psta na raiz com o nome .ssh e rodar esse comando estando dentro
-// dela, via ssh no teu terminal
-// depois precisa copiar o conteudo da chave criada e colocar la nas chaves do teu
-// repositorio. Sem isso tu nao vai conseguir clonar
 @task('generate-ssh-key', ['on' => 'web'])
     ssh-keygen -f id_rsa -t rsa -N ''
 @endtask
@@ -30,16 +26,10 @@
     phpunit
 @endtask
 
-// isso aqui nao funciona muito bem. Só qdo a locaweb quer
-// sugiro fazer isso manualmente
-// criar uma pasta em '/home/USERFTP/apps/guilherme/composer
-// depois rodar no terminal local, envoy run verify_composer. Pq dai funciona
 @task('verify_composer', ['on' => 'web'])
     [ ! -d {{ $base }}/composer ] && mkdir {{ $base }}/composer; cd {{ $base }}/composer; {{ $phpbin }} -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"; {{ $phpbin }} composer-setup.php;
 @endtask
 
-//depois de ter colocado a chave no teu repo e criado os aruivos do composer
-//ai é so rodar envoy run deploy
 @task('run_deploy', ['on' => 'web'])
     cd {{ $path }};
     git pull;
