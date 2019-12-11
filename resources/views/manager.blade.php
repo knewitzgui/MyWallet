@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          @if(Auth::user->income != null)
+          @if(Auth::user()->income != null)
           <tr style="background-color: #ccffcc">
             <th scope="row"><input type="checkbox"></th>
             <td>Renda Mensal</td>
