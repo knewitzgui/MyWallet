@@ -43,7 +43,11 @@ class LoginController extends Controller
     }
 
     public function home(){
+      if(Auth::check()){
+        return view('manager');
+      }else{
       return view('login');
+      }
     }
 
     public function logout()
