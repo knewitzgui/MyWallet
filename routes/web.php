@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () { return view('login');} );
-Route::get('/politica-de-privacidade', function () { return view('privacy');} );
+Route::get('/', ['as' => 'home', 'uses' => 'Auth\LoginController@home']);
+Route::get('/politica-de-privacidade', ['as' => 'privacy', 'uses' => 'InvestmentController@privacy']);
 
 #Rotas gerenciador
 Route::get('/gerenciador', ['as' => 'manager', 'uses' => 'ManagerController@index']);

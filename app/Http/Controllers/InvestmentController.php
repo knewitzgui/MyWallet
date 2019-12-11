@@ -17,4 +17,8 @@ class InvestmentController extends Controller
 		return redirect()->route('login')->with('error', 'Você precisa efetuar login para acessar esta página!');
 	}
 	}
+
+	public function privacy(){
+		return view('privacy');
+	}
 }
