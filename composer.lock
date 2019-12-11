@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c5aee8f8f0b63229f717cdcf09bb490",
+    "content-hash": "5f565975a74d50fcd5659537c80c6e80",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -575,6 +575,63 @@
                 "parser"
             ],
             "time": "2019-03-17T18:48:37+00:00"
+        },
+        {
+            "name": "escapework/laravel-asset-versioning",
+            "version": "0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EscapeWork/laravel-asset-versioning.git",
+                "reference": "22bf43639ff38092c1ded11c0879ce7f6159390c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EscapeWork/laravel-asset-versioning/zipball/22bf43639ff38092c1ded11c0879ce7f6159390c",
+                "reference": "22bf43639ff38092c1ded11c0879ce7f6159390c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "illuminate/console": "~5",
+                "illuminate/filesystem": "~5",
+                "illuminate/support": "~5",
+                "mockery/mockery": "@stable",
+                "nesbot/carbon": "1.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7.*-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "EscapeWork\\Assets\\AssetsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Asset": "EscapeWork\\Assets\\Facades\\Asset"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EscapeWork\\Assets\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Dalmolin",
+                    "email": "luis.nh@gmail.com"
+                }
+            ],
+            "description": "Package to help you avoid cache by versioning your assets",
+            "time": "2017-10-14T11:05:22+00:00"
         },
         {
             "name": "escapework/laravel-steroids",

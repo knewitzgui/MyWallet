@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "doctrine/dbal": "^2.10",
+        "escapework/laravel-asset-versioning": "^0.7.2",
         "escapework/laravel-steroids": "^0.7.0",
         "fideloper/proxy": "^4.0",
         "igorescobar/jquery-mask-plugin": "^1.14",
