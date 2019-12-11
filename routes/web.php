@@ -21,8 +21,13 @@ Route::post('/gerenciador/conta', ['as' => 'expense.store', 'uses' => 'ManagerCo
 Route::get('/gerenciador/remover-conta/{id}', ['as' => 'expense.delete', 'uses' => 'ManagerController@expenseDelete']);
 Route::get('/gerenciador/conta', ['as' => 'expense', 'uses' => 'ManagerController@expense']);
 Route::get('/gerenciador/renda-extra', ['as' => 'extra', 'uses' => 'ManagerController@extra']);
+Route::post('/gerenciador/renda-extra', ['as' => 'extra.store', 'uses' => 'ManagerController@extraStore']);
+Route::get('/gerenciador/remover-renda-extra/{id}', ['as' => 'extra.delete', 'uses' => 'ManagerController@extraDelete']);
 #investimentos
 Route::get('/investimentos', ['as' => 'investment', 'uses' => 'InvestmentController@index']);
+Route::get('/investimentos/adicionar-investimento', ['as' => 'stock', 'uses' => 'InvestmentController@stock']);
+Route::post('/investimentos/adicionar-investimento', ['as' => 'stock.store', 'uses' => 'InvestmentController@stockStore']);
+Route::get('/investimentos/excluir-investimento/{id}', ['as' => 'stock.delete', 'uses' => 'InvestmentController@stockDelete']);
 
 #Rotas perfil
 Route::get('/perfil', ['as' => 'profile', 'uses' => 'UserController@index']);

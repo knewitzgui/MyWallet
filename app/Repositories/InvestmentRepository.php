@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Expense;
+use App\Models\Investment;
 use EscapeWork\LaravelSteroids\Repository;
 
-class ExpenseRepository extends Repository
+class InvestmentRepository extends Repository
 {
 
-    public function __construct(Expense $model)
+    public function __construct(Investment $model)
     {
         $this->setModel($model);
     }
@@ -46,9 +46,9 @@ class ExpenseRepository extends Repository
             $query->where('name','LIKE', $request->name . '%');
         }
 
-        return $query->orderBy('vcto', 'asc')
+        return $query->orderBy('created_at', 'desc')
                      ->where('user_id', '=', $userid)
-                     ->get();
+                     ->paginate();
     }
 
     public function saldo($userid){

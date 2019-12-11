@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Expense;
+use App\Models\Extra;
 use EscapeWork\LaravelSteroids\Repository;
 
-class ExpenseRepository extends Repository
+class ExtraRepository extends Repository
 {
 
-    public function __construct(Expense $model)
+    public function __construct(Extra $model)
     {
         $this->setModel($model);
     }

@@ -32,21 +32,39 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($expenses as $expense)
-          <tr>
+          <tr style="background-color: #ccffcc">
             <th scope="row"><input type="checkbox"></th>
-            <td>{{ $expense->name }}</td>
-            <td>{{ $expense->present->vcto }}</td>
-            <td>R$ {{ number_format($expense->value, 2, ',', '.') }}</td>
-            <td><a href="{{ route('expense.delete', $expense->id) }}" class="btn btn-danger">Excluir</a> <!-- <button class="btn btn-info">Pagar</button> --> </td>
+            <td>Renda Mensal</td>
+            <td>--/--/----</td>
+            <td><i class="fa fa-plus-circle" aria-hidden="true"></i> R$ {{ Auth::user()->income }}</td>
+            <td></td>
           </tr>
+          @foreach($moviments as $moviment)
+          @if($moviment instanceof App\Models\Expense)
+          <tr style="background-color: #ffcccc">
+            <th scope="row"><input type="checkbox"></th>
+            <td>{{ $moviment->name }}</td>
+            <td>{{ $moviment->present->vcto }}</td>
+            <td><i class="fa fa-minus-circle" aria-hidden="true"></i> R$ {{ number_format($moviment->value, 2, ',', '.') }}</td>
+            <td><a href="{{ route('expense.delete', $moviment->id) }}" class="btn btn-danger">Excluir</a> <!-- <button class="btn btn-info">Pagar</button> --> </td>
+          </tr>
+          @endif
+          @if($moviment instanceof App\Models\Extra)
+          <tr style="background-color: #ccffcc">
+            <th scope="row"><input type="checkbox"></th>
+            <td>{{ $moviment->name }}</td>
+            <td>{{ $moviment->present->vcto }}</td>
+            <td><i class="fa fa-plus-circle" aria-hidden="true"></i> R$ {{ number_format($moviment->value, 2, ',', '.') }}</td>
+            <td><a href="{{ route('extra.delete', $moviment->id) }}" class="btn btn-danger">Excluir</a> <!-- <button class="btn btn-info">Pagar</button> --> </td>
+          </tr>
+          @endif
           @endforeach
         </tbody>
       </table>
       <button class="btn btn-info margem">Pagar contas marcadas</button>
       <span class="direita size"><strong>Saldo:</strong>R$ {{ number_format($saldo, 2, ',', '.') }}</span>
     </div>
-
+    <script src="https://kit.fontawesome.com/195f982978.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="{{ asset("js/app.js")}}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
