@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function home(){
       if(Auth::check()){
-        return view('manager');
+        return redirect()->route('manager');
       }else{
       return view('login');
       }
