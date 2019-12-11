@@ -30464,7 +30464,7 @@ $(document).ready(function () {
     $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
       $(this).remove();
     });
-  }, 5000);
+  }, 3000);
 });
 $(document).ready(function () {
   $('.date').mask('00/00/0000');
